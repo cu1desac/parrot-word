@@ -1,0 +1,34 @@
+{
+	"name": "parrot-word",
+	"private": true,
+	"scripts": {
+		"build": "turbo build",
+		"dev": "turbo dev",
+		"lint": "turbo lint",
+		"format": "prettier --write \"**/*.{ts,tsx,md}\"",
+		"prepare": "husky",
+		"pre-commit": "lint-staged",
+		"commit": "cd apps/web && git add -A && czg && git push",
+		"cz": "czg"
+	},
+	"lint-staged": {
+		"*.{ts,tsx}": [
+			"eslint --fix"
+		]
+	},
+	"config": {
+		"commitizen": {
+			"path": "node_modules/cz-git"
+		}
+	},
+	"devDependencies": {
+		"@repo/eslint-config": "workspace:*",
+		"@repo/typescript-config": "workspace:*",
+		"prettier": "^3.2.5",
+		"turbo": "latest"
+	},
+	"packageManager": "pnpm@8.9.0",
+	"engines": {
+		"node": ">=18"
+	}
+}
